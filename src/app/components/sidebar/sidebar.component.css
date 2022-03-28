@@ -1,0 +1,36 @@
+.sidebar {
+    width: 20%;
+    height: 100%;
+}
+
+.sidebar mat-sidenav {
+    width: 100%;
+    background-color: #efeff1;
+}
+
+.title {
+    border-bottom: 1px solid #d2d2d4;
+    text-decoration: none;
+    color: black;
+    height: 64px;
+}
+
+.title h1 {
+    margin: 0;
+    padding:0 16px;
+}
+
+.items a{
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+
+ a > mat-icon {
+    padding-right: 5px;
+}
+
+.item:hover {
+background-color: #dddddd;
+}
