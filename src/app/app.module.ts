@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeadComponent } from './components/head/head.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component'
+import { HomeComponent } from './views/home/home.component'
 
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatListModule } from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeadComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { MatListModule } from '@angular/material/list'
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    MatCardModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
