@@ -1,9 +1,9 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Notebook dell",
-        "price": "3000.99"
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "name": "Notebook dell",
+      "price": 3000
+    }
+  ]
+}

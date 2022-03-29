@@ -14,4 +14,20 @@ export class ProductService {
   read() {
     return this.http.get(`${this.api}/products`)
   }
+
+  readById(id:number) {
+    return this.http.get(`${this.api}/products/${id}`)
+  }
+
+  create(product:any) {
+    return this.http.post(`${this.api}/products`, product)
+  }
+
+  update(product:any, id:number) {
+    return this.http.put(`${this.api}/products/${id}`, product)
+  }
+
+  remove(id:number) {
+    return this.http.delete(`${this.api}/products/${id}`)
+  }
 }
