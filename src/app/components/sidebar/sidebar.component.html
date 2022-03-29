@@ -3,13 +3,13 @@
         <div class="items">
             <mat-list>
                 <mat-list-item class="item">
-                    <a href="">
+                    <a routerLink="">
                         <mat-icon>home</mat-icon>
                         Início
                     </a>
                 </mat-list-item>
                 <mat-list-item class="item">
-                    <a href="">
+                    <a routerLink="product">
                         <mat-icon>storefront</mat-icon>
                         Início
                     </a>
@@ -18,6 +18,6 @@
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-home></app-home>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
