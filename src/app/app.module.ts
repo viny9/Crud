@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,9 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component'
 import { ProductsComponent } from './views/products/products.component'
 import { ProductCreateComponent } from './views/product-create/product-create.component'
 import { UpdateProductComponent } from './views/update-product/update-product.component'
+import { DialogComponent } from './views/dialog/dialog.component'
 
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
 
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from './views/dialog/dialog.component'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { DialogComponent } from './views/dialog/dialog.component'
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatDialogModule  
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatSnackBarModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

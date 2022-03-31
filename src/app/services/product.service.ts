@@ -1,6 +1,9 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, catchError, EMPTY, map, Observable } from 'rxjs';
+import { Product } from '../views/Product.model'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -9,25 +12,67 @@ export class ProductService {
 
   api:string = environment.apiFake
 
-  constructor(private http:HttpClient) { }
+ private headInfos = new BehaviorSubject<Object>({
+    title: '',
+    icon: ''
+  })
 
-  read() {
-    return this.http.get(`${this.api}/products`)
+  constructor(private http:HttpClient, private message:MatSnackBar) { }
+
+  get titleInfo() {
+    return this.headInfos.value
   }
 
-  readById(id:number) {
-    return this.http.get(`${this.api}/products/${id}`)
+  set titleInfo(headInfos:any) {
+    this.headInfos.next(headInfos)
   }
 
-  create(product:any) {
-    return this.http.post(`${this.api}/products`, product)
+  read():Observable<Product> {
+    return this.http.get<Product>(`${this.api}/products`).pipe(
+      map(obj => obj),
+      catchError(e => this.handleError(e))
+    )
   }
 
-  update(product:any, id:number) {
-    return this.http.put(`${this.api}/products/${id}`, product)
+  readById(id:number):Observable<Product> {
+    return this.http.get<Product>(`${this.api}/products/${id}`).pipe(
+      map(obj => obj),
+      catchError(e => this.handleError(e))
+    )
   }
 
-  remove(id:number) {
-    return this.http.delete(`${this.api}/products/${id}`)
+  create(product:any):Observable<Product> {
+    return this.http.post<Product>(`${this.api}/products`, product).pipe(
+      map(obj => obj),
+      catchError(e => this.handleError(e))
+    )
+  }
+
+  update(product:any, id:number):Observable<Product> {
+    return this.http.put<Product>(`${this.api}/products/${id}`, product).pipe(
+      map(obj => obj),
+      catchError(e => this.handleError(e))
+    )
+  }
+
+  remove(id:number):Observable<Product> {
+    return this.http.delete<Product>(`${this.api}/products/${id}`).pipe(
+      map(obj => obj),
+      catchError(e => this.handleError(e))
+    )
+  }
+  
+  showMessage(msg:string, isError:boolean = false) {
+    this.message.open(msg, 'X', {
+      duration:3000,
+      verticalPosition:"top",
+      horizontalPosition:'center',
+      panelClass: isError? ['msg-error'] : ['msg-success']
+    } )
+  }
+
+  handleError(e:any): Observable<any> {
+    this.showMessage('Ocorreu um erro', true)
+    return EMPTY
   }
 }

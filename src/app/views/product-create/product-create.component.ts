@@ -1,6 +1,8 @@
+import { Product } from '../Product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-create',
@@ -9,10 +11,13 @@ import { Route, Router } from '@angular/router';
 })
 export class ProductCreateComponent implements OnInit {
 
-  newProduct = {
+  newProduct:Product = {
     name: '',
-    price: 0
+    price: NaN
   }
+
+  inputName = new FormControl('', [Validators.required])
+  inputPrice = new FormControl('', [Validators.required])
 
   constructor(private product:ProductService, private router:Router) { }
 
@@ -20,12 +25,18 @@ export class ProductCreateComponent implements OnInit {
   }
 
   save() {
-    this.product.create(this.newProduct).subscribe(() => {})
-    this.router.navigate(["product"])
+    this.product.create(this.newProduct).subscribe(() => {
+      this.product.showMessage('Operação realizada com succeso')
+      this.router.navigate(["product"])
+    })
   }
 
   cancel() {
     this.router.navigate(["product"])
+  }
+
+  getError() {
+    return 'Você deve digitar alguma coisa'
   }
 
 }

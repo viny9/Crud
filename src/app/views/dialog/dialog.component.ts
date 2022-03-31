@@ -8,12 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
 
-  constructor( private product:ProductService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  delete() {
-    // this.product.remove(0).subscribe(() => {})
   }
 }

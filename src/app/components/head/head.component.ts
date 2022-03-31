@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private product:ProductService) { }
 
   ngOnInit(): void {
-  }
+    }
 
+    get title() {
+     return this.product.titleInfo.title
+    }
+
+    get icon() {
+      return this.product.titleInfo.icon
+    }
 }
