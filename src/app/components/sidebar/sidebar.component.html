@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidebar">
+    <mat-sidenav mode="side" opened>
+        <div class="items">
+            <mat-list>
+                <mat-list-item class="item">
+                    <a routerLink="">
+                        <mat-icon>home</mat-icon>
+                        Início
+                    </a>
+                </mat-list-item>
+                <mat-list-item class="item">
+                    <a routerLink="product">
+                        <mat-icon>storefront</mat-icon>
+                        Produtos
+                    </a>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
